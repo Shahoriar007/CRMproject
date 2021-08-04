@@ -2,26 +2,58 @@
 
 session_start();
 
-if (!isset($_SESSION['username'])) {
+if (!isset($_SESSION['username'])){
     header("Location: index.php");
 }
-
+include 'config.php';
+$sessionEmail = $_SESSION['email'];
+$sql = "SELECT * FROM users WHERE email='$sessionEmail'";
+$result = mysqli_query($conn, $sql);
+if ($result->num_rows > 0) {
+  $row = mysqli_fetch_assoc($result);
+  $userName = $row['username'];
+  $userEmail = $row['email'];
+  $phoneNo = $row['phone'];
+  $userAddress = $row['address'];
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./userProfile.css">
 </head>
-<body>
-    
-<!-- Navbar starts -->
 
+<body>
+        <div class="userIcon container d-flex justify-content-center">
+            <img src="https://img.icons8.com/ios-filled/50/000000/user-female-circle.png" />
+        </div>
+        <div class="container d-flex justify-content-end">
+          <a class="nav-link" href="editUserProfile.php">Update Profile</a>
+        </div>
+
+        <div class="container">
+                <div class="col-8">
+                  <?php echo "<h4> Username: " . $userName . "</h4>"; ?>
+                </div>
+                <div class="col-8">
+                  <?php echo "<h4> Email: " . $userEmail . "</h4>"; ?>
+                </div>
+                <div class="col-8">
+                  <?php echo "<h4> Phone: " . $phoneNo . "</h4>"; ?>
+                </div>
+                <div class="col-8">
+                  <?php echo "<h4> Address: " . $userAddress . "</h4>"; ?>
+                </div>
+        </div>
+    <!-- Navbar starts -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <?php echo "Welcome " . $_SESSION['username'] . ""; ?>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -32,7 +64,7 @@ if (!isset($_SESSION['username'])) {
         <a class="nav-link" href="welcome.php">Profile </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="problem_submit.php">Problem Submission</a>
+        <a class="nav-link" href="problem_submit.php">Post Problem</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="timeline.php">Timeline</a>
@@ -43,18 +75,7 @@ if (!isset($_SESSION['username'])) {
     </ul>
     
   </div>
-</nav>
-
-
-    <h2>profile page</h2>
-    <?php echo "<h4> Username: " . $_SESSION['username'] . "</h4>"; ?>
-
-
-
-
-
-
-
-
+</nav>  
 </body>
+
 </html>

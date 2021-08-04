@@ -43,10 +43,8 @@ if (!isset($_SESSION['username'])) {
 <!-- Problem Form -->
 
 <form action="problem_post.php" method="post">
- Name: <input type="text" name="name" required/><br>
- Email: <input type="email" name="email" required/><br>
+<input type="hidden" name="status" value="unsolved">
  Problem: <input type="text" name="problem" required/><br>
-
 <input type="submit" />
 
 
