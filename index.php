@@ -56,7 +56,7 @@ if (isset($_POST['submit'])) {
 			<p class="login-register-text">Don't have an account? <a href="register.php">Register Here</a>.</p>
 
 			<p class="login-register-text"><a href="admin_login.php">Admin Section</a></p>
-
+			<p class="login-register-text"><a href="emp_login.php">Employee Section</a></p>
 
 		</form>
 	</div>
