@@ -15,13 +15,15 @@ if (isset($_POST['submit'])) {
 	$email = $_POST['email'];
 	$password = md5($_POST['password']);
 	$cpassword = md5($_POST['cpassword']);
+	$phone = $_POST['phone'];
+	$address = $_POST['address'];
 
 	if ($password == $cpassword) {
 		$sql = "SELECT * FROM users WHERE email='$email'";
 		$result = mysqli_query($conn, $sql);
 		if (!$result->num_rows > 0) {
-			$sql = "INSERT INTO users (username, email, password)
-					VALUES ('$username', '$email', '$password')";
+			$sql = "INSERT INTO users (username, email, password, phone, address)
+					VALUES ('$username', '$email', '$password', '$phone', '$address')";
 			$result = mysqli_query($conn, $sql);
 			if ($result) {
 				echo "<script>alert('Wow! User Registration Completed.')</script>";
@@ -70,6 +72,12 @@ if (isset($_POST['submit'])) {
             </div>
             <div class="input-group">
 				<input type="password" placeholder="Confirm Password" name="cpassword" value="<?php echo $_POST['cpassword']; ?>" required>
+			</div>
+			<div class="input-group">
+				<input type="tel" placeholder="Phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" value="<?php echo $phone; ?>" required>
+			</div>
+			<div class="input-group">
+				<input type="text" placeholder="Address" name="address" value="<?php echo $address; ?>" required>
 			</div>
 			<div class="input-group">
 				<button name="submit" class="btn">Register</button>
