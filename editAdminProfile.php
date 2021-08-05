@@ -2,43 +2,45 @@
 include 'config.php';
 session_start();
 $sessionEmail = $_SESSION['email'];
-$sql = "SELECT * FROM users WHERE email='$sessionEmail'";
+$sql = "SELECT * FROM admin WHERE email='$sessionEmail'";
 	$result = mysqli_query($conn, $sql);
 
 	if ($result->num_rows > 0) {
 		$row = mysqli_fetch_assoc($result);
 		$usernameVal = $row['username'];
 		$emailVal = $row['email'];
-		$phoneVal = $row['phone'];
-		$addressVal = $row['address'];	
+		$nameVal = $row['name'];
+		$postVal = $row['post'];	
+        $phnVal = $row['phn_number'];	
 	}
 	
 
 if (isset($_POST['submit'])) {
     include 'config.php';
-	$username = $_POST['username'];
-	$email = $_POST['email'];
-	$phone = $_POST['phone'];
-	$address = $_POST['address'];
+	$username = $row['username'];
+    $email = $row['email'];
+    $name = $row['name'];
+    $post = $row['post'];	
+    $phn_number = $row['phn_number'];
 	
-	$sql = "SELECT * FROM users WHERE email='$email'";
+	$sql = "SELECT * FROM admin WHERE email='$email'";
 	$result = mysqli_query($conn, $sql);
 	if ($result->num_rows > 1) {
 		echo "provide an unique email";
 	}
 	else{
 		$sessionEmail = $_SESSION['email'];
-		$sql = "UPDATE users SET username='$username', email='$email', phone='$phone', address='$address' 
+		$sql = "UPDATE admin SET username='$username', email='$email', name='$name', post='$post' , phn_number='$phn_number'
                 WHERE email='$sessionEmail'";
         mysqli_query($conn, $sql);
 		if($email != ''){
-			$sql = "SELECT * FROM users WHERE email='$email'";
+			$sql = "SELECT * FROM admin WHERE email='$email'";
 			$result = mysqli_query($conn, $sql);
 			if ($result->num_rows > 0) {
 				$row = mysqli_fetch_assoc($result);
 				$_SESSION['username'] = $row['username'];
 				$_SESSION['email'] = $row['email'];
-				header("Location: welcome.php");
+				header("Location: wel_admin.php");
 			}
 				
 }
@@ -100,12 +102,16 @@ if (isset($_POST['submit'])) {
 				<input type="email"  name="email" value="<?php echo $emailVal ?>" >
 			</div>
 			<div class="input-group">
-				<label>Phone: </label>
-				<input type="tel"  name="phone" value="<?php echo $phoneVal ?>">
+				<label>Name: </label>
+				<input type="text"  name="name" value="<?php echo $nameVal ?>">
 			</div>
 			<div class="input-group">
-				<label>Address: </label>
-				<input type="text"  name="address" value="<?php echo $addressVal ?>">
+				<label>Post: </label>
+				<input type="text"  name="post" value="<?php echo $postVal ?>">
+			</div>
+            <div class="input-group">
+				<label>Phn: </label>
+				<input type="text"  name="phn_number" value="<?php echo $phnVal ?>">
 			</div>
 			<div class="input-group">
 				<button name="submit" class="btn">Update</button>

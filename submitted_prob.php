@@ -33,11 +33,20 @@ if (mysqli_query($conn, $sql)) {
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="wel_admin.php">Dashboard </a>
+    <li class="nav-item active">
+        <a class="nav-link" href="wel_admin.php">Profile </a>
+      </li>
+    <li class="nav-item">
+        <a class="nav-link" href="customer_list.php">Customer List</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="submitted_prob.php">Submitted problem</a>
+        <a class="nav-link" href="submitted_prob.php">Submitted Problems</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="offer_post.php">Post Offers</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="logout.php">Logout</a></a>
       </li>
     </ul>
     

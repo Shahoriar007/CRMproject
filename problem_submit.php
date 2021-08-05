@@ -18,10 +18,9 @@ if (!isset($_SESSION['username'])) {
 </head>
 <body>
     
-<!-- Navbar starts -->
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+            <!-- Navbar starts -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -32,12 +31,20 @@ if (!isset($_SESSION['username'])) {
         <a class="nav-link" href="welcome.php">Profile </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="problem_submit.php">Problem Submission</a>
+        <a class="nav-link" href="problem_submit.php">Post Problem</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="timeline.php">Timeline</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="logout.php">Logout</a></a>
       </li>
     </ul>
     
   </div>
-</nav>
+</nav> 
+
+<!-- Navbar ends -->
 
 
 <!-- Problem Form -->

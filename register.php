@@ -62,22 +62,22 @@ if (isset($_POST['submit'])) {
 		<form action="" method="POST" class="login-email">
             <p class="login-text" style="font-size: 2rem; font-weight: 800;">Register</p>
 			<div class="input-group">
-				<input type="text" placeholder="Username" name="username" value="<?php echo $username; ?>" required>
+				<input type="text" placeholder="Username" name="username"  required>
 			</div>
 			<div class="input-group">
-				<input type="email" placeholder="Email" name="email" value="<?php echo $email; ?>" required>
+				<input type="email" placeholder="Email" name="email"  required>
 			</div>
 			<div class="input-group">
-				<input type="password" placeholder="Password" name="password" value="<?php echo $_POST['password']; ?>" required>
+				<input type="password" placeholder="Password" name="password"  required>
             </div>
             <div class="input-group">
-				<input type="password" placeholder="Confirm Password" name="cpassword" value="<?php echo $_POST['cpassword']; ?>" required>
+				<input type="password" placeholder="Confirm Password" name="cpassword"  required>
 			</div>
 			<div class="input-group">
-				<input type="tel" placeholder="Phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" value="<?php echo $phone; ?>" required>
+				<input type="tel" placeholder="Phone" name="phone"  required>
 			</div>
 			<div class="input-group">
-				<input type="text" placeholder="Address" name="address" value="<?php echo $address; ?>" required>
+				<input type="text" placeholder="Address" name="address"  required>
 			</div>
 			<div class="input-group">
 				<button name="submit" class="btn">Register</button>
