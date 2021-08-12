@@ -2,8 +2,9 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
-        <!-- Latest compiled and minified CSS -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css?ver=0.6" rel="stylesheet">
         <style>
@@ -28,6 +29,40 @@
         </style>
     </head>
     <body>
+
+<!-- Nnvbar Starts -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+      <a class="nav-link" href="wel_admin.php">Profile</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="customer_list.php">Customer List</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="submitted_prob.php">Submitted Problems</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="offer_post.php">Post Offers</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="enter_potentials.php">Potential customer</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="bulk_email.php">Send bulk email</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="logout.php">Logout</a></a>
+    </li>
+  </ul>
+  
+</div>
+</nav>
+<!-- Navbar ends -->
+
+
         <?php
         include 'config.php';
         include 'vendor/autoload.php';

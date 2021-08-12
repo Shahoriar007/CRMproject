@@ -12,6 +12,7 @@ if (mysqli_query($conn, $sql)) {
 }
 
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,31 +27,33 @@ if (mysqli_query($conn, $sql)) {
 <!-- Navbar starts -->
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <ul class="navbar-nav mr-auto">
     <li class="nav-item active">
-        <a class="nav-link" href="wel_admin.php">Profile </a>
-      </li>
+      <a class="nav-link" href="wel_admin.php">Profile</a>
+    </li>
     <li class="nav-item">
-        <a class="nav-link" href="customer_list.php">Customer List</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="submitted_prob.php">Submitted Problems</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="offer_post.php">Post Offers</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="logout.php">Logout</a></a>
-      </li>
-    </ul>
-    
-  </div>
+      <a class="nav-link" href="customer_list.php">Customer List</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="submitted_prob.php">Submitted Problems</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="offer_post.php">Post Offers</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="enter_potentials.php">Potential customer</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="bulk_email.php">Send bulk email</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="logout.php">Logout</a></a>
+    </li>
+  </ul>
+  
+</div>
 </nav>
 
 <?php
@@ -100,7 +103,7 @@ if (mysqli_num_rows($result) > 0) {
                     echo "<option value=$row3[emp_id]>" . $row3[username] ."</option>";
                   }
                   }
-                  
+
                 echo "</select></br>";
 
               echo "<input type='submit' name='submit'>";
