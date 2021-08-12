@@ -4,7 +4,7 @@ include 'config.php';
 session_start();
 if(isset($_POST["submit"])){
 $sql = "UPDATE problem_submit SET solution='$_POST[solution]',
-        status='$_POST[status]' WHERE probId = $_POST[probId]";
+        status='$_POST[status]',emp_id='$_POST[employee]' WHERE probId = $_POST[probId]";
 if (mysqli_query($conn, $sql)) {
     header("Location: submitted_prob.php");
 } else {
@@ -87,12 +87,20 @@ if (mysqli_num_rows($result) > 0) {
                   echo "<option value='assigned'>" . 'assigned' ."</option>";
                 echo "</select>";
 
-              echo "<label for='status'>" . "Employee" ."</label>";
+              echo "<label for='employee'>" . "Employee" ."</label>";
 
                 echo "<select name='employee' id='employee'>";
-                  echo "<option value='unsolved'>" . 'unsolved' ."</option>";
-                  echo "<option value='solved'>" . 'solved' ."</option>";
-                  echo "<option value='assigned'>" . 'assigned' ."</option>";
+
+                  $sql = "SELECT emp_id,username FROM employee";
+                  $result3 = mysqli_query($conn, $sql);
+
+                  if (mysqli_num_rows($result3) > 0) {
+                      while($row3 = mysqli_fetch_assoc($result3)){
+
+                    echo "<option value=$row3[emp_id]>" . $row3[username] ."</option>";
+                  }
+                  }
+                  
                 echo "</select></br>";
 
               echo "<input type='submit' name='submit'>";
