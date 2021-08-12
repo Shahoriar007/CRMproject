@@ -7,6 +7,8 @@ session_start();
 //     header("Location: emp_login.php");
 // }
 
+
+// Assigned problem show
 include 'config.php';
 $sessionEmail = $_SESSION['email'];
 $sql = "SELECT * FROM employee WHERE email='$sessionEmail'";
@@ -18,18 +20,20 @@ if ($result->num_rows > 0) {
   $emp_id = $row['emp_id'];
 }
 
+// Solution post
+if(isset($_POST["submit"])){
+    $sql = "UPDATE problem_submit SET solution='$_POST[solution]',
+            status='$_POST[status]' WHERE probId = '$_POST[probId]'";
+    if (mysqli_query($conn, $sql)) {
+        header("Location: emp_assigned_prob.php");
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+    
+    }
 
 
-// if(isset($_POST["submit"])){
-// $sql = "UPDATE problem_submit SET solution='$_POST[solution]',
-//         status='$_POST[status]' WHERE probId = $_POST[probId]";
-// if (mysqli_query($conn, $sql)) {
-//     header("Location: submitted_prob.php");
-// } else {
-//     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-// }
 
-// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,7 +74,7 @@ if ($result->num_rows > 0) {
 
 <?php
 
-$sql = "SELECT problem,status, userId FROM problem_submit WHERE emp_id=$emp_id AND status='assigned'";
+$sql = "SELECT problem,status,probId, userId FROM problem_submit WHERE emp_id=$emp_id AND status='assigned'";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
@@ -88,37 +92,25 @@ if (mysqli_num_rows($result) > 0) {
                 echo "<h3>User-Phone: " . $row2['phone'] ."</h3>";
                 echo "<h4>User-Address: " . $row2['address'] ."</h4>";
                 echo "<p>Problem: " . $row['problem'] ."</p>";
-                echo "<p>Status: " . $row['status'] ."</p>";
+                // echo "<p>Status: " . $row['status'] ."</p>";
         
-        // echo "<form action='' method='post'>";
+        echo "<form action='' method='post'>";
         
-          
-        //     echo "<input type='hidden' name='probId' value='$row[probId]'>";
-        //     echo "<textarea name='solution' rows='5' cols='30' placeholder='write solution'></textarea>";
+            echo "<input type='hidden' name='probId' value='$row[probId]'>";
+            echo "<textarea name='solution' rows='5' cols='30' placeholder='write solution'></textarea>";
 
-        //       echo "<input type='hidden' name='probId' value='$row[probId]'>";
+              echo "<input type='hidden' name='probId' value='$row[probId]'>";
                 
-        //       echo "<label for='status'>" . "status" ."</label>";
+              echo "<label for='status'>" . "status" ."</label>";
 
-        //         echo "<select name='status' id='status'>";
-        //           echo "<option value='unsolved'>" . 'unsolved' ."</option>";
-        //           echo "<option value='solved'>" . 'solved' ."</option>";
-        //           echo "<option value='assigned'>" . 'assigned' ."</option>";
-        //         echo "</select>";
+                echo "<select name='status' id='status'>";
+                  echo "<option value='unsolved'>" . 'unsolved' ."</option>";
+                  echo "<option value='solved'>" . 'solved' ."</option>";
+                  echo "<option value='assigned'>" . 'assigned' ."</option>";
+                echo "</select>";
 
-        //       echo "<label for='status'>" . "Employee" ."</label>";
-
-        //         echo "<select name='employee' id='employee'>";
-
-
-
-        //           echo "<option value='unsolved'>" . 'unsolved' ."</option>";
-        //           echo "<option value='solved'>" . 'solved' ."</option>";
-        //           echo "<option value='assigned'>" . 'assigned' ."</option>";
-        //         echo "</select></br>";
-
-        //       echo "<input type='submit' name='submit'>";
-        //     echo "</form>";
+              echo "<input type='submit' name='submit'>";
+            echo "</form>";
            
         
            

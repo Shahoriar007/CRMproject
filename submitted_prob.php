@@ -90,9 +90,6 @@ if (mysqli_num_rows($result) > 0) {
               echo "<label for='status'>" . "Employee" ."</label>";
 
                 echo "<select name='employee' id='employee'>";
-
-
-
                   echo "<option value='unsolved'>" . 'unsolved' ."</option>";
                   echo "<option value='solved'>" . 'solved' ."</option>";
                   echo "<option value='assigned'>" . 'assigned' ."</option>";
