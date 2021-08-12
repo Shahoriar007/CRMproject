@@ -41,6 +41,12 @@ if (!isset($_SESSION['username'])) {
         <a class="nav-link" href="offer_post.php">Post Offers</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="enter_potentials.php">Potential customer</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="bulk_email.php">Send bulk email</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="logout.php">Logout</a></a>
       </li>
     </ul>

@@ -52,32 +52,56 @@ if (mysqli_query($conn, $sql)) {
     
   </div>
 </nav>
+
 <?php
-$sql = "SELECT userId,probId,problem FROM problem_submit WHERE status='unsolved'";
+
+$sql = "SELECT userId,emp_id,probId,problem FROM problem_submit WHERE status='unsolved'";
 $result = mysqli_query($conn, $sql);
+
 if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
+
     $sql = "SELECT username,email FROM users WHERE userId=$row[userId]";
     $result2 = mysqli_query($conn, $sql);
+
     if (mysqli_num_rows($result2) > 0) {
         $row2 = mysqli_fetch_assoc($result2);
-        echo "<tr>";
-			echo "<h3>Name: " . $row2['username'] ."</h3>";
-            echo "<h4>Email: " . $row2['email'] ."</h4>";
-            echo "<p>Problem: " . $row['problem'] ."</p>";
-           
-            echo "<form action='' method='post'>";
+
+			  echo "<h3>Name: " . $row2['username'] ."</h3>";
+        echo "<h4>Email: " . $row2['email'] ."</h4>";
+        echo "<p>Problem: " . $row['problem'] ."</p>";
+        
+        echo "<form action='' method='post'>";
+        
+          
             echo "<input type='hidden' name='probId' value='$row[probId]'>";
             echo "<textarea name='solution' rows='5' cols='30' placeholder='write solution'></textarea>";
-            echo "<input type='hidden' name='probId' value='$row[probId]'>";
-            echo "<label for='status'>" . "status" ."</label>";
-            echo "<select name='status' id='status'>";
-            echo "<option value='unsolved'>" . 'unsolved' ."</option>";
-            echo "<option value='solved'>" . 'solved' ."</option>";
-            echo "<option value='assigned'>" . 'assigned' ."</option>";
-            echo "</select></br>";
-            echo "<input type='submit' name='submit'>";
+
+              echo "<input type='hidden' name='probId' value='$row[probId]'>";
+                
+              echo "<label for='status'>" . "status" ."</label>";
+
+                echo "<select name='status' id='status'>";
+                  echo "<option value='unsolved'>" . 'unsolved' ."</option>";
+                  echo "<option value='solved'>" . 'solved' ."</option>";
+                  echo "<option value='assigned'>" . 'assigned' ."</option>";
+                echo "</select>";
+
+              echo "<label for='status'>" . "Employee" ."</label>";
+
+                echo "<select name='employee' id='employee'>";
+
+
+
+                  echo "<option value='unsolved'>" . 'unsolved' ."</option>";
+                  echo "<option value='solved'>" . 'solved' ."</option>";
+                  echo "<option value='assigned'>" . 'assigned' ."</option>";
+                echo "</select></br>";
+
+              echo "<input type='submit' name='submit'>";
             echo "</form>";
+           
+        
            
 
     }

@@ -2,8 +2,19 @@
 
 session_start();
 
-if (!isset($_SESSION['username'])) {
-    header("Location: admin_login.php");
+// if (!isset($_SESSION['username'])) {
+//     header("Location: admin_login.php");
+// }
+
+include 'config.php';
+$sessionEmail = $_SESSION['email'];
+$sql = "SELECT * FROM employee WHERE email='$sessionEmail'";
+$result = mysqli_query($conn, $sql);
+if ($result->num_rows > 0) {
+  $row = mysqli_fetch_assoc($result);
+  $userName = $row['username'];
+  $userEmail = $row['email'];
+  $userid = $row['emp_id'];
 }
 
 ?>
@@ -33,7 +44,7 @@ if (!isset($_SESSION['username'])) {
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="submitted_prob.php">Assigned Problems</a>
+        <a class="nav-link" href="emp_assigned_prob.php">Assigned Problems</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="logout.php">Logout</a></a>
@@ -44,7 +55,21 @@ if (!isset($_SESSION['username'])) {
 </nav>
 
     <h2>profile page</h2>
-    <?php echo "<h4> Username: " . $_SESSION['username'] . "</h4>"; ?>
+
+    <div class="container">
+                <div class="col-8">
+                  <?php echo "<h4> Username: " . $userName . "</h4>"; ?>
+                </div>
+                <div class="col-8">
+                  <?php echo "<h4> Email: " . $userEmail . "</h4>"; ?>
+                </div>
+                <!-- <div class="col-8">
+                  <?php echo "<h4> Phone: " . $userid . "</h4>"; ?>
+                </div> -->
+                <!-- <div class="col-8">
+                  <?php echo "<h4> Address: " . $userAddress . "</h4>"; ?>
+                </div>  -->
+        </div>
 
 </body>
 </html>
