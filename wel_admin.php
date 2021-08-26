@@ -41,6 +41,9 @@ if (!isset($_SESSION['username'])) {
         <a class="nav-link" href="offer_post.php">Post Offers</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="create_employee.php">Create Employee</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="enter_potentials.php">Potential customer</a>
       </li>
       <li class="nav-item">
